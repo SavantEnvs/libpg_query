@@ -1,0 +1,9 @@
+project: savantenvs/libpg_query
+target: fuzz_plpgsql
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_plpgsql/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_plpgsql
+    libfuzzer: true
+    timeout: 30

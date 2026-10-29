@@ -1,0 +1,15 @@
+CREATE FUNCTION c() RETURNS void AS $$
+DECLARE
+  cur CURSOR FOR SELECT a, b FROM t;
+  rec record;
+BEGIN
+  OPEN cur;
+  LOOP
+    FETCH cur INTO rec;
+    EXIT WHEN NOT FOUND;
+    INSERT INTO u VALUES (rec.a, rec.b);
+  END LOOP;
+  CLOSE cur;
+  FOREACH rec IN ARRAY ARRAY[1,2,3] LOOP NULL; END LOOP;
+END;
+$$ LANGUAGE plpgsql;

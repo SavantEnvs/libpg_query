@@ -1,0 +1,10 @@
+# seed-from: https://app.mayhem.security/savantenvs/libpg-query/fuzz-protobuf
+project: savantenvs/libpg_query
+target: fuzz_protobuf-mined-f474d6b
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_protobuf-mined-f474d6b/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_protobuf
+    libfuzzer: true
+    timeout: 30
